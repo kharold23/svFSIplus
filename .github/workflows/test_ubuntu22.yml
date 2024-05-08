@@ -6,6 +6,14 @@ jobs:
     container: msalvad/ubuntu22_vtk9:v1
     steps:
       - uses: actions/checkout@v3
+      - name: Build svZeroDSolver
+        run: |
+          git clone https://github.com/SimVascular/svZeroDSolver.git
+          cd svZeroDSolver
+          mkdir build
+          cd build
+          cmake ..
+          make -j2
       - name: Build svFSIplus
         run: |
           mkdir build
